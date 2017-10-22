@@ -1,0 +1,46 @@
+{
+  "name": "CoffeeShop",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "city": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "reviewers": {
+      "type": "hasMany",
+      "model": "Reviewer",
+      "foreignKey": ""
+    },
+    "reviews": {
+      "type": "hasMany",
+      "model": "Review",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "create"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
